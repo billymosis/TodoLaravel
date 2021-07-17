@@ -14,11 +14,11 @@ class CreateTodosTable extends Migration
     public function up()
     {
         Schema::create('todos', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->nullable(false)->unique()->primary();
             $table->string('title');
             $table->boolean('done');
             $table->dateTimeTz('created_at');
-            $table->dateTimeTz('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTimeTz('updated_at');
         });
     }
 
